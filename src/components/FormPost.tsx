@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FormInputPost } from "@/types";
 import { FC } from "react";
 
-import { fetchTasks } from "../../api/tasks";
+import { fetchTasks } from "../api/tasks";
 
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
@@ -17,11 +17,11 @@ interface FormPostProps {
 const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   const { register, handleSubmit } = useForm<FormInputPost>();
   // fetch list
-  const { isPending, isError, data, error } = useQuery({
+  const { isPending, isError, data: tasks, error } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTasks,
   });
-  console.log(data);
+  console.log(tasks);
   
 
   if (isPending) {

@@ -1,6 +1,6 @@
 "use client"
-import BackButton from "@/components/ui/BackButton"
-import ButtonAction from "@/components/ui/ButtonAction"
+import BackButton from "@/components/BackButton"
+import ButtonAction from "@/components/ButtonAction"
 
 const TaskDetails = () => {
   return (
