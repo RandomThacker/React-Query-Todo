@@ -9,6 +9,7 @@ import { fetchTasks } from "../api/tasks";
 import { SkeletonCard } from "@/components/SkeletonCard";
  
 const Home = () => {
+  
   const {
     isPending,
     isError,

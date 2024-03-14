@@ -32,7 +32,7 @@ function EditTask() {
     onSuccess: ()=>{
       queryClient.invalidateQueries({queryKey: ['todos']})
       console.log("redirecting to new page");
-      // push('/');
+      push('/');
     }
   })
 
