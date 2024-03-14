@@ -7,13 +7,16 @@ import { fetchTask } from "../../../api/tasks";
 import { useParams } from 'next/navigation'
 
 const TaskDetails = () => {
-  const id = useParams()
+  const {id} = useParams()
   console.log(id);
+  console.log(7);
+  
   
   const {
     isPending,
     isError,
     data: tasks,
+    
     error,
   } = useQuery({
     queryKey: ["todos",id],
@@ -36,8 +39,8 @@ const TaskDetails = () => {
   return (
     <div className="mb-8">
         <BackButton/>
-      <h2 className="text-2xl font-bold my-4">Task  Details</h2>
-      <p className="text-slate-700">Task 1 Details</p>
+      <h2 className="text-2xl font-bold my-4">{tasks.task}</h2>
+      <p className="text-slate-700">{tasks.taskDesc}</p>
       <ButtonAction/>
     </div>
   )
