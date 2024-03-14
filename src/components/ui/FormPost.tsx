@@ -9,9 +9,10 @@ import { FC } from "react";
 
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
+  isEditing: boolean;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit }) => {
+const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   const { register, handleSubmit } = useForm<FormInputPost>();
 
   return (
@@ -31,7 +32,7 @@ const FormPost: FC<FormPostProps> = ({ submit }) => {
         className="max-w-md w-full"
       />
       <Button type="submit" variant="outline" className="bg-black text-white w-full max-w-md">
-        Add
+        {isEditing? "Update" : "Add"}
       </Button>
     </form>
   );

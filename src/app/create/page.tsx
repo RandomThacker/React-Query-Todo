@@ -11,8 +11,8 @@ function CreatePage() {
   };
   return (
     <div>
-      <h1 className="text-2xl my-4 font-bold text-center">Add new task</h1>
-      <FormPost submit={handleCreateTask} />
+      <h1 className="text-2xl my-4 font-bold text-center">Add New Task</h1>
+      <FormPost submit={handleCreateTask} isEditing={false}/>
     </div>
   );
 }
