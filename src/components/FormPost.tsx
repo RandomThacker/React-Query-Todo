@@ -21,7 +21,7 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
     queryKey: ["todos"],
     queryFn: fetchTasks,
   });
-  console.log(tasks);
+  // console.log(tasks);
   
 
   if (isPending) {

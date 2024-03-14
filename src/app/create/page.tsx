@@ -18,7 +18,7 @@ const queryClient = useQueryClient();
     mutationFn: createTask,
     onSuccess: ()=>{
       queryClient.invalidateQueries({queryKey: ['posts']})
-      console.log("redirecting to new page");
+      // console.log("redirecting to new page");
     }
   })
 
@@ -27,7 +27,7 @@ const queryClient = useQueryClient();
       id:uuidv4(),
       ...data
     })
-    console.log(data);
+    // console.log(data);
     push('/');
   };
   return (

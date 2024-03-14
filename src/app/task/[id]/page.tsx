@@ -8,8 +8,8 @@ import { useParams } from 'next/navigation'
 
 const TaskDetails = () => {
   const {id} = useParams()
-  console.log(id);
-  console.log(7);
+  // console.log(id);
+  // console.log(7);
   
   
   const {
@@ -22,7 +22,7 @@ const TaskDetails = () => {
     queryKey: ["todos",id],
     queryFn: ()=>fetchTask(id),
   });
-  console.log(tasks);
+  // console.log(tasks);
 
   if (isPending) {
     return (
