@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 function PostCard() {
   return (
@@ -19,7 +20,9 @@ function PostCard() {
           <p>Card Content</p>
         </CardContent>
         <CardFooter>
-          <p>Card Footer</p>
+          <Link href="task/1">
+            <p>View</p>
+          </Link>
         </CardFooter>
       </Card>
     </div>

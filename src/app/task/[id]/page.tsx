@@ -1,8 +1,11 @@
+"use client"
+import BackButton from "@/components/ui/BackButton"
 import ButtonAction from "@/components/ui/ButtonAction"
 
 const TaskDetails = () => {
   return (
     <div className="mb-8">
+        <BackButton/>
       <h2 className="text-2xl font-bold my-4">Task  Details</h2>
       <p className="text-slate-700">Task 1 Details</p>
       <ButtonAction/>

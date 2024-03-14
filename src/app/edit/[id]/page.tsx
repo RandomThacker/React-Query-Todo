@@ -1,4 +1,5 @@
 "use client";
+import BackButton from "@/components/ui/BackButton";
 import FormPost from "@/components/ui/FormPost";
 import { FormInputPost } from "@/types";
 import React from "react";
@@ -10,6 +11,7 @@ function EditTask() {
   };
   return (
     <div>
+        <BackButton/>
       <h1 className="text-2xl my-4 font-bold text-center">Edit Task</h1>
       <FormPost submit={handleEditTask} isEditing/>
     </div>
