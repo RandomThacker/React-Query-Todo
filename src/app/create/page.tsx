@@ -17,7 +17,7 @@ const queryClient = useQueryClient();
   const createTaskMutation = useMutation({
     mutationFn: createTask,
     onSuccess: ()=>{
-      queryClient.invalidateQueries({queryKey: ['posts']})
+      queryClient.invalidateQueries({queryKey: ['todos']})
       // console.log("redirecting to new page");
     }
   })

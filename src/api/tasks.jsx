@@ -19,3 +19,20 @@ export async function createTask(newTask){
     return response.json()
 }
 
+export async function updateTask(updatedTask){
+    const response = await fetch(`http://localhost:3000/${updatedTask.id}`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTask)
+    })
+    return response.json()
+}
+
+export async function deleteTask(id){
+    const response = await fetch(`http://localhost:3000/${id}`,{
+        method: "DELETE",
+    })
+    return response.json()
+}

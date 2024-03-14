@@ -18,7 +18,7 @@ interface InputProps {
 }
 
 const PostCard: FC<InputProps>=({ taskId, task, taskDescp })=> {
-  console.log(task, taskDescp, taskId);
+  // console.log(task, taskDescp, taskId);
   
   return (
     <div>

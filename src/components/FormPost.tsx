@@ -12,10 +12,13 @@ import { fetchTasks } from "../api/tasks";
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
   isEditing: boolean;
+  initialValue?: FormInputPost;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
-  const { register, handleSubmit } = useForm<FormInputPost>();
+const FormPost: FC<FormPostProps> = ({ submit, isEditing, initialValue }) => {
+  const { register, handleSubmit } = useForm<FormInputPost>({
+    defaultValues:initialValue,
+  });
   // fetch list
   const { isPending, isError, data: tasks, error } = useQuery({
     queryKey: ["todos"],

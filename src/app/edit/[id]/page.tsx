@@ -1,24 +1,24 @@
 "use client";
-import { fetchTask } from "@/api/tasks";
+import { updateTask, fetchTask } from "@/api/tasks";
 import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
 import { FormInputPost } from "@/types";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React from "react";
 import { SubmitHandler } from "react-hook-form";
+import { useRouter } from 'next/navigation';
+
 
 function EditTask() {
-
+  const queryClient = useQueryClient();
   const {id} = useParams()
-  // console.log(id);
-  // console.log(7);
-  
+  const { push } = useRouter();
   
   const {
     isPending,
     isError,
-    data: tasks,
+    data: task,
     
     error,
   } = useQuery({
@@ -26,6 +26,15 @@ function EditTask() {
     queryFn: ()=>fetchTask(id),
   });
   // console.log(tasks);
+
+  const updateTaskMutation = useMutation({
+    mutationFn: updateTask,
+    onSuccess: ()=>{
+      queryClient.invalidateQueries({queryKey: ['todos']})
+      console.log("redirecting to new page");
+      // push('/');
+    }
+  })
 
   if (isPending) {
     return (
@@ -42,13 +51,14 @@ function EditTask() {
 
 
   const handleEditTask: SubmitHandler<FormInputPost> = (data) => {
-    // console.log(data);
+    updateTaskMutation.mutate({id, ...data})
+    console.log(data);
   };
   return (
     <div>
         <BackButton/>
       <h1 className="text-2xl my-4 font-bold text-center">Edit Task</h1>
-      <FormPost submit={handleEditTask} isEditing/>
+      <FormPost submit={handleEditTask} isEditing initialValue={task}/>
     </div>
   );
 } 
