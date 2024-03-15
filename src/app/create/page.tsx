@@ -5,17 +5,17 @@ import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
 import { FormInputPost } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router'; // Import useRouter from 'next/router'
 import { SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from 'uuid';
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react"; // Import PropsWithChildren from 'react'
 
 interface CreatePageProps {
   onCloseDialog: () => void;
 }
 
 const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialog }) => {
-  const { push } = useRouter();
+  const router = useRouter(); // Use useRouter from 'next/router' instead of 'next/navigation'
   const queryClient = useQueryClient();
 
   const createTaskMutation = useMutation({
@@ -30,7 +30,7 @@ const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialo
     try {
       const newTask = { id: uuidv4(), ...data };
       await createTaskMutation.mutateAsync(newTask);
-      push('/');
+      router.push('/'); // Use router.push to navigate to the home page
     } catch (error) {
       console.error('Error creating task:', error);
     }
