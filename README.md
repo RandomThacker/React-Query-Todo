@@ -31,12 +31,12 @@ To set up the Food Ordering App project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    https://github.com/RandomThacker/sketchbook.git
+    https://github.com/RandomThacker/todobluelearn.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd sketchbook
+    cd todobluelearn
     ```
 
 3. Install the required dependencies:
