@@ -7,7 +7,7 @@
 
 ## 🔗 Live link
 
-**[https://sketchbook-random.vercel.app/](https://sketchbook-random.vercel.app/)**
+**https://bluelearn-todo.vercel.app/**
 
 
 ## 💻 Tech-Stack 
