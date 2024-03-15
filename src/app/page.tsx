@@ -30,7 +30,6 @@ const Home = () => {
     queryKey: ["todos"],
     queryFn: fetchTasks,
   });
-  console.log(todos);
 
   const { data } = useQuery({
     queryKey: ["check"],
@@ -38,21 +37,31 @@ const Home = () => {
   });
   let checkData = data?.data?.code;
 
+  let content = null;
 
   if (isPending) {
-    return (
-      <div className="bg-zinc-800">
-        <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 md:mx-10">
+    content = (
+      <div className="bg-zinc-800 w-[100vw] h-screen">
+        <div className="w-[100%] h-screen flex align-middle item-center justify-center gap-4">
           <SkeletonCard />
           <SkeletonCard />
           <SkeletonCard />
         </div>
       </div>
     );
-  }
-
-  if (isError) {
-    return <span>Error: {error.message}</span>;
+  } else if (checkData && checkData === 404) {
+    content = <h1 className="text-zinc-800">No Data Found!</h1>;
+  } else if (isError) {
+    content = <span>Error: {error.message}</span>;
+  } else if (checkData) {
+    content = todos.map((task: { _id: string; todoName: string; taskId: string }) => (
+      <PostCard
+        key={task._id}
+        todoName={task.todoName}
+        taskId={task._id}
+        reference={ref}
+      />
+    ));
   }
 
   return (
@@ -63,37 +72,23 @@ const Home = () => {
       >
         Todos
       </h1>
-     <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 md:mx-10 z-[10]">
-        {checkData && checkData === 404 ? (
-          <span>No todos available.</span>
-        ) : (
-          todos.map(
-            (task: { _id: string; todoName: string; taskId: string }) => (
-              <PostCard
-                key={task._id}
-                todoName={task.todoName}
-                taskId={task._id}
-                reference={ref}
-              />
-            )
-          )
-        )}
+      <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 md:mx-10 z-[10]">
+        {content}
       </div>
 
-        <Link href="/create">
-          <Button
-            variant="outline"
-            className="bg-black text-white rounded-xl fixed bottom-10 right-10 h-20"
-          >
-            <PlusIcon className="h-7 w-7 mr-2" />
-            <h1 className="text-xl">Add a new Task</h1>
-          </Button>
-        </Link>
-      
+      <Link href="/create">
+        <Button
+          variant="outline"
+          className="bg-black text-white rounded-xl fixed bottom-10 right-10 h-20"
+        >
+          <PlusIcon className="h-7 w-7 mr-2" />
+          <h1 className="text-xl">Add a new Task</h1>
+        </Button>
+      </Link>
 
       <Dialog>
         <DialogTrigger asChild>
-          <Button
+        <Button
             variant="outline"
             className="rounded-full py-7 bg-[#ffcd10] fixed top-10 right-10"
           >

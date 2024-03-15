@@ -9,6 +9,11 @@ export async function fetchTasks(){
     return response.data.data
 }
 
+export const addTask = async (taskData) => {
+  const { data } = await axios.post("/api/tasks", taskData);
+  return data;
+};
+
 export async function fetchData(){
   const response =await axios.get(url)
   return response
