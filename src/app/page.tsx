@@ -40,15 +40,6 @@ const Home = () => {
 
   let checkData = data?.data?.code
   console.log("fetch data",checkData)
-  if(checkData === 404)
-  console.log("perfect");
-else
-console.log("error");
-console.log("todo", todos);
-
-
-  
-
  
   if (isPending) {
     return (
@@ -60,6 +51,12 @@ console.log("todo", todos);
         </div>
       </div>
     );
+  }
+
+  if(checkData && checkData === 404){
+    return(
+      <h1>hello world</h1>
+    )
   }
 
   if (isError) {
