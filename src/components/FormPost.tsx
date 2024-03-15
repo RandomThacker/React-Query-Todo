@@ -20,12 +20,12 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing, initialValue }) => {
     defaultValues:initialValue,
   });
   // fetch list
-  const { isPending, isError, data: tasks, error } = useQuery({
+  const { isPending, isError, data: todos, error } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTasks,
   });
-  // console.log(tasks);
-  
+  console.log(todos);
+
 
   if (isPending) {
     return <span>Loading...</span>;
@@ -43,11 +43,6 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing, initialValue }) => {
         {...register("task", { required: true })}
         type="text"
         placeholder="Task"
-        className="max-w-md w-full"
-      />
-      <Textarea
-        {...register("taskDesc", { required: true })}
-        placeholder="Task Details"
         className="max-w-md w-full"
       />
       <Button
