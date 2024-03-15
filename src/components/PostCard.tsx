@@ -17,19 +17,18 @@ import { motion } from "framer-motion";
 
 interface InputProps {
   taskId: string;
-  task: string;
+  todoName: string;
   reference: any;
 }
 
-const PostCard: FC<InputProps> = ({ taskId, task, reference }) => {
-  // console.log(task, taskDescp, taskId);
+const PostCard: FC<InputProps> = ({ taskId, todoName, reference }) => {
   const queryClient = useQueryClient();
 
   const { data: todos } = useQuery({
     queryKey: ["todos", taskId],
     queryFn: () => fetchTask(taskId),
   });
-  console.log(todos);
+  // console.log(todos);
 
   const deletePostMutation = useMutation({
     mutationFn: deleteTask,
@@ -39,7 +38,7 @@ const PostCard: FC<InputProps> = ({ taskId, task, reference }) => {
   });
 
   const handleDelete = () => {
-    console.log(taskId);
+    // console.log(taskId);
     deletePostMutation.mutate(taskId);
   };
 
@@ -48,7 +47,7 @@ const PostCard: FC<InputProps> = ({ taskId, task, reference }) => {
       <Card className="shadow-xl border cursor-pointer z-50 bg-zinc-900/90 border-none text-zinc-100 w-[250px] h-[200px] flex flex-col justify-between">
         {/* <Link href={`/task/${taskId}`}> */}
           <CardHeader>
-            <CardTitle>{task}</CardTitle>
+            <CardTitle>{todoName}</CardTitle>
           </CardHeader>
           <div className="flex item-center align-middle justify-center">
             <Link
