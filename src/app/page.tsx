@@ -29,8 +29,18 @@ const Home = () => {
   } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTasks,
+    
   });
-  console.log(todos);
+
+  // const {
+  //   data: todos,
+  //   isLoading,
+  //   isError,
+  //   error,
+  // } = useQuery(["todos"], fetchTasks, {
+  //   staleTime: 300000, // 5 minutes
+  //   cacheTime: 3600000, // 1 hour
+  // });
 
   if (isPending) {
     return (
