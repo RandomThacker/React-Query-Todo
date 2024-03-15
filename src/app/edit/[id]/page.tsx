@@ -1,5 +1,5 @@
 "use client"
-import { updateTask, fetchTask } from "@/api/tasks";
+import { updateTask, fetchTask, deleteTask } from "@/api/tasks";
 import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
 import { FormInputPost } from "@/types";
@@ -8,6 +8,8 @@ import { useParams } from "next/navigation";
 import React from "react";
 import { SubmitHandler } from "react-hook-form";
 import { useRouter } from 'next/navigation';
+import { v4 as uuidv4 } from 'uuid';
+
 
 function EditTask() {
   const queryClient = useQueryClient();
@@ -29,18 +31,21 @@ function EditTask() {
     }
   });
 
+  const deletePostMutation = useMutation({
+    mutationFn: deleteTask,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+    },
+  });
+
   const handleEditTask: SubmitHandler<FormInputPost> = async (data) => {
     console.log("Submitting update:", data); // Check if data is correct before update
   
-    const updatedTask = { _id: id, ...data };
-    console.log("Updated task id:", updatedTask._id); // Check the updated task object
+    const updatedTask = { _id: uuidv4(), ...data };
+    console.log("Updated task id:", updatedTask); // Check the updated task object
   
-    try {
-      const result = await updateTaskMutation.mutateAsync(updatedTask);
-      console.log("Update successful:", result); // Log the result from the update API call
-    } catch (error) {
-      console.error("Update failed:", error); // Log any errors that occur during the update
-    }
+    deletePostMutation.mutate(id)
+    updateTaskMutation.mutate(updatedTask);
   };
 
   if (isLoading) {

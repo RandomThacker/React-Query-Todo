@@ -5,7 +5,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchTasks } from "../api/tasks";
+import { fetchData, fetchTasks } from "../api/tasks";
 import { SkeletonCard } from "@/components/SkeletonCard";
 import { useRef, useState } from "react";
 
@@ -29,19 +29,27 @@ const Home = () => {
   } = useQuery({
     queryKey: ["todos"],
     queryFn: fetchTasks,
-    
   });
 
-  // const {
-  //   data: todos,
-  //   isLoading,
-  //   isError,
-  //   error,
-  // } = useQuery(["todos"], fetchTasks, {
-  //   staleTime: 300000, // 5 minutes
-  //   cacheTime: 3600000, // 1 hour
-  // });
+  const {
+    data,
+  } = useQuery({
+    queryKey: ["check"],
+    queryFn: fetchData,
+  });
 
+  let checkData = data?.data?.code
+  console.log("fetch data",checkData)
+  if(checkData === 404)
+  console.log("perfect");
+else
+console.log("error");
+console.log("todo", todos);
+
+
+  
+
+ 
   if (isPending) {
     return (
       <div className="bg-zinc-800">
@@ -57,6 +65,8 @@ const Home = () => {
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
+
+ 
 
   const handleOpenDialog = () => {
     setIsDialogOpen(true);
@@ -82,7 +92,7 @@ const Home = () => {
             className="bg-white text-silver rounded-xl fixed bottom-10 right-10 py-10 px-7"
             onClick={handleOpenDialog} // Open dialog on button click
           >
-            <h1 className="text-xl">Add a<br></br> new Task</h1>
+            <h1 className="text-xl">Add a<br /> new Task</h1>
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
@@ -92,15 +102,19 @@ const Home = () => {
       
       {/* Cards */}
       <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 md:mx-10 z-[10]">
-        {todos.map(
-          (task: { _id: string; todoName: string; taskId: string }) => (
-            <PostCard
-              key={task._id}
-              todoName={task.todoName}
-              taskId={task._id}
-              reference={ref}
-            />
+        {checkData && checkData != 404 ? (
+          todos.map(
+            (task: { _id: string; todoName: string; taskId: string }) => (
+              <PostCard
+                key={task._id}
+                todoName={task.todoName}
+                taskId={task._id}
+                reference={ref}
+              />
+            )
           )
+        ) : (
+          <span>No todos available.</span>
         )}
       </div>
     </div>
