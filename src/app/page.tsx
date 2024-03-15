@@ -53,11 +53,11 @@ const Home = () => {
     );
   }
 
-  if(checkData && checkData === 404){
-    return(
-      <h1>hello world</h1>
-    )
-  }
+  // if(checkData && checkData === 404){
+  //   return(
+  //     <h1>hello world</h1>
+  //   )
+  // }
 
   if (isError) {
     return <span>Error: {error.message}</span>;
@@ -99,7 +99,10 @@ const Home = () => {
       
       {/* Cards */}
       <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 md:mx-10 z-[10]">
-        {checkData && checkData != 404 ? (
+        {
+        (checkData && checkData == 404) ?  (
+          <span>No todos available.</span>
+        ):(
           todos.map(
             (task: { _id: string; todoName: string; taskId: string }) => (
               <PostCard
@@ -110,8 +113,6 @@ const Home = () => {
               />
             )
           )
-        ) : (
-          <span>No todos available.</span>
         )}
       </div>
     </div>

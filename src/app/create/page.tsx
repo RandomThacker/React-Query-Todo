@@ -1,3 +1,4 @@
+"use client"
 import { createTask } from "@/api/tasks";
 import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
@@ -11,7 +12,7 @@ interface CreatePageProps {
   onCloseDialog: () => void;
 }
 
-function CreatePage({ onCloseDialog }: CreatePageProps) {
+const CreatePage: React.FC<CreatePageProps> = ({ onCloseDialog }) => {
   const { push } = useRouter();
   const queryClient = useQueryClient();
 
