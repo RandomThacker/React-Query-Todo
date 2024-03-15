@@ -1,6 +1,5 @@
 "use client"
 import { createTask } from "@/api/tasks";
-import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
 import { FormInputPost } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -10,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import React, { PropsWithChildren } from "react";
 
 interface CreatePageProps {
-  onCloseDialog: () => void;
+  onCloseDialog: () => any;
 }
 
 const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialog }) => {
@@ -21,7 +20,7 @@ const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialo
     mutationFn: createTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
-      onCloseDialog(); // Close the dialog here
+      onCloseDialog(); 
     }
   });
 
@@ -37,7 +36,6 @@ const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialo
 
   return (
     <div>
-      {/* <BackButton/> */}
       <h1 className="text-2xl my-4 font-bold text-center">Add New Task</h1>
       <FormPost submit={handleCreateTask} isEditing={false}/>
     </div>
