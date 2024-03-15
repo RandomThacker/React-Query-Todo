@@ -36,9 +36,11 @@ function CreatePage() {
   };
 
   return (
-    <div className="h-screen bg-zinc-800">
-      <BackButton />
-      <div className="bg-zinc-100 shadow-lg w-[550px] py-16 rounded-lg block m-auto">
+    <div className="h-screen bg-zinc-800 overflow-hidden">
+      <div className="mt-10 mx-10">
+      <BackButton/>
+      </div>
+      <div className="bg-zinc-100 shadow-lg w-[550px] py-16 rounded-lg block mx-auto my-20">
         <h1 className="text-2xl my-4 font-bold text-center">Add a new task</h1>
         <FormPost submit={handleCreateTask} isEditing={false} />
       </div>
