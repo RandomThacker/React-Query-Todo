@@ -21,8 +21,10 @@
 
 -Live API for CRUD Operations
 
-## 💻 
--Next Js for frontend
+-Caching the data for saving api calls
+
+## Free Open Source APi for CRUD
+https://github.com/ndraaditiya/public-api-crud-todoApp
 
 ## ⚙️Installation 
 To set up the Food Ordering App project locally, follow these steps:
