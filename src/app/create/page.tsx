@@ -12,7 +12,7 @@ interface CreatePageProps {
   onCloseDialog: () => any;
 }
 
-const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialog }) => {
+const CreatePage: React.FC<CreatePageProps> = ({ onCloseDialog }) => {
   const { push } = useRouter();
   const queryClient = useQueryClient();
 
