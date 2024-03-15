@@ -22,7 +22,7 @@ const Home = () => {
     queryKey: ["todos"],
     queryFn: fetchTasks,
   });
-  // console.log(todos);
+  console.log(todos);
 
   if (isPending) {
     return (
@@ -49,7 +49,7 @@ const Home = () => {
 }) => (
         <PostCard
         key={task._id}
-        task={task.todoName} 
+        todoName={task.todoName} 
         taskId={task._id} 
       
           reference = {ref}

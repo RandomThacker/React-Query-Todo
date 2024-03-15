@@ -3,16 +3,14 @@ import { createTask } from "@/api/tasks";
 import BackButton from "@/components/BackButton";
 import FormPost from "@/components/FormPost";
 import { FormInputPost } from "@/types";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import { useMutation,useQueryClient } from "@tanstack/react-query";
+import { useRouter } from 'next/navigation';
 import { SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from 'uuid';
-import { useRouter } from 'next/navigation';
 
 function CreatePage() {
   const { push } = useRouter();
-
-const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   const createTaskMutation = useMutation({
     mutationFn: createTask,
@@ -22,14 +20,22 @@ const queryClient = useQueryClient();
     }
   })
 
-  const handleCreateTask: SubmitHandler<FormInputPost> = (data) => {
-    createTaskMutation.mutate({
-      id:uuidv4(),
-      ...data
-    })
-    // console.log(data);
-    push('/');
+  const handleCreateTask: SubmitHandler<FormInputPost> = async (data) => {
+    try {
+      // let newData = data.todoName
+      const newTask = { id: uuidv4(), ...data }; // Assuming data contains task details
+      await createTaskMutation.mutateAsync(newTask);
+      // console.log(newData);
+      // console.log(data);
+
+      
+      push('/');
+    } catch (error) {
+      console.error('Error creating task:', error);
+      // Handle error as needed, e.g., show error message to the user
+    }
   };
+
   return (
     <div>
       <BackButton/>
