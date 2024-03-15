@@ -38,9 +38,9 @@ const PostCard: FC<InputProps> = ({ taskId, todoName, reference }) => {
     <motion.div
       drag
       dragConstraints={reference}
-      animate={{ opacity: deleteBtn?0:1,  scale:deleteBtn? 5: 1 }}
-      // transition={{type:"tween", duration:3}}
-      initial={{ scale: 0, y: 100 }}
+      animate={{ opacity: deleteBtn?0:1,  scale:deleteBtn? 10: 1, y: deleteBtn? -50 : 0 }}
+      transition={{type:"tween", duration:1.5}}
+      initial={{ scale: 1, y: 200 }}
     >
       <Card className="shadow-xl border cursor-pointer z-50 bg-zinc-900/90 border-none text-zinc-100 w-[250px] h-[200px] flex flex-col justify-between">
         {/* <Link href={`/task/${taskId}`}> */}
