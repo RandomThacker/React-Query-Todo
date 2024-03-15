@@ -10,11 +10,12 @@ import { SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from 'uuid';
 import { PropsWithChildren } from "react"; // Import PropsWithChildren from 'react'
 
-interface CreatePageProps {
-  onCloseDialog: () => void;
-}
 
-const CreatePage: React.FC<PropsWithChildren<CreatePageProps>> = ({ onCloseDialog }) => {
+// interface CreatePageProps {
+//   onCloseDialog: () => void;
+// }
+
+const CreatePage: React.FC<any> = ({ onCloseDialog }) => {
   const router = useRouter(); // Use useRouter from 'next/router' instead of 'next/navigation'
   const queryClient = useQueryClient();
 
