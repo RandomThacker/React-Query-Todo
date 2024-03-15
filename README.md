@@ -1,8 +1,8 @@
-## Sketchbook
+## Todo App 
 
-Sketchbook – a dynamic sketchbook with live collaboration features, drawing inspiration from the beloved Excali Draw.
 
-![image](https://github.com/RandomThacker/sketchbook/assets/141705990/9c1dbd89-4b0e-41f0-b3e9-901e832d4db9)
+![15 03 2024_18 18 40_REC-ezgif com-video-to-gif-converter](https://github.com/RandomThacker/todobluelearn/assets/141705990/503b7544-ddff-45a2-b720-79fcd05fcf52)
+
 
 
 ## 🔗 Live link
@@ -10,24 +10,19 @@ Sketchbook – a dynamic sketchbook with live collaboration features, drawing in
 **[https://sketchbook-random.vercel.app/](https://sketchbook-random.vercel.app/)**
 
 
-## 📓Features 
-🖌️ Draw lines, make doodles, and erase mistakes.
-
-↩️ Enjoy Undo and Redo support to correct or revert changes effortlessly.
-
-🎨 Export your creations in multiple formats like PNG, JPEG, and more.
-
-💡 Collaborate with friends and family by creating or joining rooms for real-time drawing fun.
-
-📱 Responsive design ensures compatibility with all screen sizes.
-
 ## 💻 Tech-Stack 
--Frontend: Next.js + Redux Toolkit + Canvas
+-Next Js for frontend
 
--Real-time Collaboration: WebSocket & Signaling via Socket.IO
+-Framer Motion for animations
 
--Server: NodeJs + ExpressJs
+-React Hooks Form for forms
 
+-Shad/cn for UI
+
+-Live API for CRUD Operations
+
+## 💻 
+-Next Js for frontend
 
 ## ⚙️Installation 
 To set up the Food Ordering App project locally, follow these steps:
