@@ -1,38 +1,45 @@
+import axios from "axios";
+
+const url = 'https://calm-plum-jaguar-tutu.cyclic.app/todos'
+
+
+//done
 export async function fetchTasks(){
-    const response = await fetch("http://localhost:3000/tasks")
-    return response.json()
+    const response =await axios.get(url)
+    return response.data.data
 }
 
+//done
 export async function fetchTask(id){
-    const response = await fetch(`http://localhost:3000/tasks/${id}`)
-    return response.json()
+    const response =await axios.get(`${url}/${id}`)
+    return response.data.data
 }
 
-export async function createTask(newTask){
-    const response = await fetch(`http://localhost:3000/tasks`,{
-        method: "POST",
+export async function createTask(newTask) {
+    const response = await axios.post(url, newTask, {
         headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newTask)
-    })
-    return response.json()
+        }
+    });
+    return response.data.data;
 }
 
-export async function updateTask(updatedTask){
-    const response = await fetch(`http://localhost:3000/tasks/${updatedTask.id}`,{
-        method: "PUT",
+export async function updateTask(updatedTask) {
+    try {
+      const response = await axios.put(`${url}/${updatedTask._id}`, updatedTask, {
         headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(updatedTask)
-    })
-    return response.json()
-}
+          "Content-Type": "application/json"
+        }
+      });
+      return response.data.data;
+    } catch (error) {
+      throw new Error("Failed to update task: " + error.message);
+    }
+  }
+  
 
+//done
 export async function deleteTask(id){
-    const response = await fetch(`http://localhost:3000/tasks/${id}`,{
-        method: "DELETE",
-    })
-    return response.json()
+    const response =await axios.delete(`${url}/${id}`)
+    return response.data.data
 }
