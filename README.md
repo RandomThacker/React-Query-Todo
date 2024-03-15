@@ -21,20 +21,22 @@
 
 -Live API for CRUD Operations
 
-## 💻 
--Next Js for frontend
+-Caching the data for saving api calls
+
+## Free Open Source APi for CRUD
+https://github.com/ndraaditiya/public-api-crud-todoApp
 
 ## ⚙️Installation 
 To set up the Food Ordering App project locally, follow these steps:
 
 1. Clone the repository:
     ```bash
-    https://github.com/RandomThacker/sketchbook.git
+    https://github.com/RandomThacker/todobluelearn.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd sketchbook
+    cd todobluelearn
     ```
 
 3. Install the required dependencies:
