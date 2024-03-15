@@ -61,10 +61,12 @@ function EditTask() {
   }
 
   return (
-    <div>
+    <div className="h-screen bg-zinc-800">
       <BackButton/>
+      <div className="bg-zinc-100 shadow-lg w-[550px] py-16 rounded-lg block m-auto">
       <h1 className="text-2xl my-4 font-bold text-center">Edit Task</h1>
       <FormPost submit={handleEditTask} isEditing initialValue={taskData} />
+      </div>
     </div>
   );
 }
