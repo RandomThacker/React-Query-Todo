@@ -19,7 +19,6 @@ const PostCard: FC<InputProps> = ({ taskId, todoName, reference }) => {
     queryKey: ["todos", taskId],
     queryFn: () => fetchTask(taskId),
   });
-  // console.log(todos);
 
   const deletePostMutation = useMutation({
     mutationFn: deleteTask,
@@ -30,7 +29,6 @@ const PostCard: FC<InputProps> = ({ taskId, todoName, reference }) => {
 
   const handleDelete = () => {
     setDeleteBtn(true);
-    // console.log(taskId);
     deletePostMutation.mutate(taskId);
   };
 

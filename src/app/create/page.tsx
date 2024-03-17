@@ -16,22 +16,17 @@ function CreatePage() {
     mutationFn: createTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
-      // console.log("redirecting to new page");
     },
   });
 
   const handleCreateTask: SubmitHandler<FormInputPost> = async (data) => {
     try {
-      // let newData = data.todoName
-      const newTask = { id: uuidv4(), ...data }; // Assuming data contains task details
+      const newTask = { id: uuidv4(), ...data }; 
       await createTaskMutation.mutateAsync(newTask);
-      // console.log(newData);
-      // console.log(data);
-
+ 
       push("/");
     } catch (error) {
       console.error("Error creating task:", error);
-      // Handle error as needed, e.g., show error message to the user
     }
   };
 

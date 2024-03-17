@@ -20,13 +20,11 @@ function EditTask() {
     queryKey: ["todos",id],
     queryFn: ()=>fetchTask(id),
   });
-  console.log(taskData);
   
   const updateTaskMutation = useMutation({
     mutationFn: updateTask,
     onSuccess: ()=>{
       queryClient.invalidateQueries({queryKey: ['todos']})
-      console.log("redirecting to new page");
       push('/');
     }
   });
@@ -39,11 +37,7 @@ function EditTask() {
   });
 
   const handleEditTask: SubmitHandler<FormInputPost> = async (data) => {
-    console.log("Submitting update:", data); // Check if data is correct before update
-  
-    const updatedTask = { _id: uuidv4(), ...data };
-    console.log("Updated task id:", updatedTask); // Check the updated task object
-  
+    const updatedTask = { _id: uuidv4(), ...data };  
     deletePostMutation.mutate(id)
     updateTaskMutation.mutate(updatedTask);
   };
