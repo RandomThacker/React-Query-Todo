@@ -7,7 +7,7 @@
 
 ## 🔗 Live link
 
-**https://bluelearn-todo.vercel.app/**
+**https://todobluelearn.vercel.app/**
 
 
 ## 💻 Tech-Stack 
