@@ -7,7 +7,7 @@
 
 ## 🔗 Live link
 
-**https://todobluelearn.vercel.app/**
+**https://reactquerytodo.vercel.app/**
 
 
 ## 💻 Tech-Stack 
